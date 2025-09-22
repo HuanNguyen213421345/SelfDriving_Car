@@ -8,6 +8,7 @@
 #include <fcntl.h>
 #include <sys/mman.h>
 #include <stdlib.h>
+#include <chrono>
 
 #define PERIPHERAL_BASE 	0xFE000000
 #define PAGE_SIZE 			(4*1024)
@@ -47,6 +48,7 @@ void gpio_init_uart(void);
 int uart_init(unsigned int baud);
 void uart_putc(char c);
 char uart_getc(void);
+uint32_t myTick();
 
 #endif
 

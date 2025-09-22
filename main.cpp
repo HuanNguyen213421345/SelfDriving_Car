@@ -26,10 +26,10 @@ void uart_setup(unsigned int baud)
 		exit(0);
 	}
 	
-	if(gpioInitialise() < 0) {
-		std::cerr << "pigpio init failed!!!" << std::endl;
-		exit(1);
-	}
+//	if(gpioInitialise() < 0) {
+//		std::cerr << "pigpio init failed!!!" << std::endl;
+//		exit(1);
+//	}
 	
     std::cerr << "UART0 initialized at " << baud << " Baud (mmap)" << std::endl;
 }
@@ -79,11 +79,11 @@ int main(){
 		float t = elapsed_seconds.count();
 		int FPS = 1/t;
 		
-		if(gpioTick()/1000 - time_ > 500)
+		if(myTick()/1000 - time_ > 500)
 		{
 			min_send_frame(&min_ctx, 0, &error, sizeof(error));
 //			uart_putc('A');
-			time_ = gpioTick()/1000;
+			time_ = myTick()/1000;
 		}
 		
 		std::cout << "FPS= " << FPS << std::endl;

@@ -24,7 +24,7 @@ void min_tx_byte(uint8_t port, uint8_t byte)
 
 uint32_t min_time_ms(void)
 {
-	return gpioTick() / 1000;
+	return myTick()/ 1000;
 }
 
 void min_application_handler(uint8_t min_id,

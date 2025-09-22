@@ -52,6 +52,14 @@ int uart_init(unsigned int baud)
 	return 0;
 }
 
+uint32_t myTick()
+{
+	static auto start = std::chrono::high_resolution_clock::now();
+	auto now = std::chrono::high_resolution_clock::now();
+	auto us = std::chrono::duration_cast<std::chrono::microseconds>(now - start).count();
+	return static_cast<uint32_t>(us);
+}
+
 void uart_putc(char c)
 {
 	while(uart_map[UART_FR/4] & UART_FR_TXFF);
